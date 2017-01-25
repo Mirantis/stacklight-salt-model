@@ -4,7 +4,7 @@ classes:
 - system.linux.system.repo.tcp_salt
 - system.openssh.client.lab
 - system.salt.master.api
-- system.salt.master.git
+- system.salt.master.pkg
 - system.reclass.storage.salt
 - system.salt.minion.ca.salt_master
 - system.salt.minion.cert.proxy
