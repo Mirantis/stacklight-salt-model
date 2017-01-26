@@ -73,3 +73,18 @@ parameters:
         openstack_proxy_node01:
           classes:
           - cluster.mk22_lab_dvr.stacklight.proxy
+        stacklight_server_node01:
+          classes:
+          - service.galera.master.cluster
+          params:
+            mysql_cluster_role: master
+        stacklight_server_node02:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            mysql_cluster_role: slave
+        stacklight_server_node03:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            mysql_cluster_role: slave

@@ -1,7 +1,9 @@
 classes:
+- service.haproxy.proxy.single
 - system.linux.system.repo.grafana
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.tcp_elastic
+- system.linux.system.repo.mos9
 - system.collectd.remote_client.cluster
 - system.heka.remote_collector.cluster
 - system.heka.remote_collector.input.amqp
@@ -11,12 +13,13 @@ classes:
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.cluster
-- cluster.mk22_lab_dvr
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
 - system.haproxy.proxy.listen.stacklight.grafana
-- service.haproxy.proxy.single
 - system.keepalived.cluster.instance.stacklight_monitor_vip
+- system.galera.server.cluster
+- system.galera.server.database.grafana
+- cluster.mk22_lab_dvr
 parameters:
   _param:
     collectd_remote_collector_host: ${_param:stacklight_monitor_address}
@@ -29,11 +32,11 @@ parameters:
     cluster_elasticsearch_port: 9200
     cluster_kibana_port: 5601
     cluster_grafana_port: 3000
-    cluster_node01_name: mon01
+    cluster_node01_hostname: mon01
     cluster_node01_address: ${_param:stacklight_monitor_node01_address}
-    cluster_node02_name: mon02
+    cluster_node02_hostname: mon02
     cluster_node02_address: ${_param:stacklight_monitor_node02_address}
-    cluster_node03_name: mon03
+    cluster_node03_hostname: mon03
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
   linux:
     network:
