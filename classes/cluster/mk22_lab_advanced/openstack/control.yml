@@ -19,6 +19,7 @@ classes:
 - system.neutron.control.notification.messagingv2
 - system.cinder.control.cluster
 - system.cinder.control.notification.messagingv2
+- system.cinder.control.backend.lvm
 - system.heat.server.cluster
 - system.heat.server.notification.messagingv2
 - system.ceilometer.server.cluster
