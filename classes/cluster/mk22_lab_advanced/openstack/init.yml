@@ -100,46 +100,6 @@ parameters:
           names:
           - ctl03
           - ctl03.${_param:cluster_domain}
-        msg:
-          address: ${_param:openstack_message_queue_address}
-          names:
-          - msg
-          - msg.${_param:cluster_domain}
-        msg01:
-          address: ${_param:openstack_message_queue_node01_address}
-          names:
-          - msg01
-          - msg01.${_param:cluster_domain}
-        msg02:
-          address: ${_param:openstack_message_queue_node02_address}
-          names:
-          - msg02
-          - msg02.${_param:cluster_domain}
-        msg03:
-          address: ${_param:openstack_message_queue_node03_address}
-          names:
-          - msg03
-          - msg03.${_param:cluster_domain}
-        dbs:
-          address: ${_param:openstack_database_address}
-          names:
-          - dbs
-          - dbs.${_param:cluster_domain}
-        dbs01:
-          address: ${_param:openstack_database_node01_address}
-          names:
-          - dbs01
-          - dbs01.${_param:cluster_domain}
-        dbs02:
-          address: ${_param:openstack_database_node02_address}
-          names:
-          - dbs02
-          - dbs02.${_param:cluster_domain}
-        dbs03:
-          address: ${_param:openstack_database_node03_address}
-          names:
-          - dbs03
-          - dbs03.${_param:cluster_domain}
         cmp01:
           address: 172.16.10.105
           names:
