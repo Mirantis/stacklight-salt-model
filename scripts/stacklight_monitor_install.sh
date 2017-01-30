@@ -36,6 +36,9 @@ salt -C 'I@nagios:server' state.sls nagios
 # started later only on the node holding the VIP address
 salt -C 'I@nagios:server' service.stop nagios3
 
+# Install sensu clients
+salt -C 'I@sensu:client' state.sls sensu
+
 # Finalize the configuration of Grafana (add the dashboards...)
 salt -C 'I@grafana:client' state.sls grafana.client.service
 salt -C 'I@grafana:client' --async service.restart salt-minion; sleep 10

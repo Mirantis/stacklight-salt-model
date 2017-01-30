@@ -6,6 +6,7 @@ classes:
 - system.heka.remote_collector.cluster
 - system.heka.remote_collector.input.amqp
 - system.heka.aggregator.cluster
+- system.heka.aggregator.output.sensu
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
@@ -13,11 +14,14 @@ classes:
 - system.influxdb.server.single
 - system.influxdb.database.stacklight
 - system.nagios.server.cluster
+- system.sensu.server.cluster
 - cluster.mk22_lab_dvr
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
 - system.haproxy.proxy.listen.stacklight.grafana
 - system.haproxy.proxy.listen.stacklight.influxdb
+- system.haproxy.proxy.listen.stacklight.redis
+- system.haproxy.proxy.listen.stacklight.sensu
 - service.haproxy.proxy.single
 - system.keepalived.cluster.instance.stacklight_monitor_vip
 parameters:
@@ -28,11 +32,15 @@ parameters:
     keepalived_stacklight_monitor_vip_address: ${_param:stacklight_monitor_address}
     keepalived_stacklight_monitor_vip_password: 'password'
     keepalived_stacklight_monitor_vip_interface: ens4
+    sensu_dashboard_password: 'password'
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_elasticsearch_port: 9200
     cluster_kibana_port: 5601
     cluster_grafana_port: 3000
     cluster_influxdb_port: 8086
+    cluster_redis_port: 6379
+    cluster_sensu_port: 4567
+    cluster_uchiwa_port: 3001
     cluster_node01_hostname: mon01
     cluster_node01_address: ${_param:stacklight_monitor_node01_address}
     cluster_node02_hostname: mon02
@@ -46,3 +54,39 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  sensu:
+    server:
+      enabled: true
+      database:
+        engine: redis
+        host: ${_param:stacklight_monitor_address}
+        port: ${_param:cluster_redis_port}
+      message_queue:
+        engine: rabbitmq
+        host: ${_param:stacklight_monitor_address}
+        port: ${_param:rabbitmq_monitor_port}
+        user: monitor
+        password: ${_param:rabbitmq_monitor_password}
+        virtual_host: '/monitor'
+      bind:
+        address: ${_param:single_address}
+        port: ${_param:cluster_sensu_port}
+      handler:
+        default:
+          enabled: true
+          set:
+          - pipe
+      check_handlers:
+      - default
+    dashboard:
+      enabled: true
+      backend:
+        sensu:
+          host: ${_param:single_address}
+          port: ${_param:cluster_sensu_port}
+      bind:
+        address: ${_param:single_address}
+        port: ${_param:cluster_uchiwa_port}
+      admin:
+        username: admin
+        password: ${_param:sensu_dashboard_password}

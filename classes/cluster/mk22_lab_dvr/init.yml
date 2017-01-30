@@ -40,6 +40,9 @@ parameters:
     stacklight_monitor_node01_address: 172.16.10.107
     stacklight_monitor_node02_address: 172.16.10.108
     stacklight_monitor_node03_address: 172.16.10.109
+    # Transport for sensu
+    rabbitmq_monitor_password: 'password'
+    rabbitmq_monitor_port: 5672
   linux:
     network:
       host:
