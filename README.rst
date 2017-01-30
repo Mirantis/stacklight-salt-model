@@ -75,3 +75,15 @@ Mk.22 advanced testing lab
 * 3 control nodes
 * 2 compute nodes
 * 3 monitoring nodes
+
+
+Mk.22 splitted contrail testing lab
+-----------------------------------
+
+* 1 config node
+* 3 OpenStack control nodes
+* 3 OpenContrail control nodes
+* 3 OpenContrail analytics nodes
+* 1 Proxy/Gateway node
+* 1 compute node
+* 1 monitor node
