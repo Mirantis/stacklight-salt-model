@@ -1,6 +1,7 @@
 classes:
 - system.linux.system.single
 - system.rsyslog.client.single
+- system.openssh.client.lab
 - system.openssh.server.team.lab
 - system.openssh.server.team.stacklight
 - cluster.mk22_lab_basic.infra
