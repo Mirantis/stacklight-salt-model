@@ -3,7 +3,7 @@ classes:
 - system.rsyslog.client.single
 - system.openssh.server.team.lab
 - system.openssh.server.team.stacklight
-- cluster.mk22_lab_basic.fuel
+- cluster.mk22_lab_basic.infra
 - cluster.mk22_lab_basic.openstack
 - cluster.mk22_lab_basic.stacklight
 - cluster.mk22_lab_basic.stacklight.client
@@ -13,8 +13,8 @@ parameters:
     cluster_name: mk22_lab_basic
     cluster_public_host: _
 
-    # fuel service addresses
-    fuel_config_address: 172.16.10.100
+    # infra service addresses
+    infra_config_address: 172.16.10.100
 
     # openstack service addresses
     openstack_proxy_address: 172.16.10.121
