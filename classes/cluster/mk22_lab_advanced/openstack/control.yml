@@ -8,13 +8,19 @@ classes:
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
 - system.keystone.server.cluster
+- system.keystone.server.notification.messagingv2
 - system.keystone.server.storage.glusterfs
 - system.glance.control.cluster
+- system.glance.control.notification.messagingv2
 - system.glance.control.storage.glusterfs
 - system.nova.control.cluster
+- system.nova.control.notification.messagingv2
 - system.neutron.control.opencontrail.cluster
+- system.neutron.control.notification.messagingv2
 - system.cinder.control.cluster
+- system.cinder.control.notification.messagingv2
 - system.heat.server.cluster
+- system.heat.server.notification.messagingv2
 - system.ceilometer.server.cluster
 - system.ceilometer.server.backend.influxdb
 - system.aodh.server.cluster
@@ -61,23 +67,12 @@ parameters:
   keystone:
     server:
       admin_email: ${_param:admin_email}
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
   glance:
     server:
       storage:
         engine: file
       images: []
       workers: 1
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
-  heat:
-    server:
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
   nova:
     controller:
       networking: contrail
@@ -94,9 +89,6 @@ parameters:
         - host: 127.0.0.1
           port: 11211
       workers: 1
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
   neutron:
     server:
       plugin: contrail
@@ -104,15 +96,3 @@ parameters:
       public_networks: []
       contrail:
         version: ${_param:opencontrail_version}
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
-  cinder:
-    volume:
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
-    controller:
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
