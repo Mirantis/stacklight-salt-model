@@ -10,6 +10,7 @@ classes:
 - system.keystone.server.notification.cadf
 - system.keystone.server.notification.messagingv2
 - system.keystone.server.storage.glusterfs
+- system.keystone.server.wsgi
 - system.glance.control.cluster
 - system.glance.control.notification.cadf
 - system.glance.control.notification.messagingv2
@@ -65,6 +66,12 @@ parameters:
   keystone:
     server:
       admin_email: ${_param:admin_email}
+      site:
+        keystone:
+          log:
+            custom:
+              format: >-
+                %v:%p %h %l %u %t \"%r\" %>s %D %O \"%{Referer}i\" \"%{User-Agent}i\"
   glance:
     server:
       storage:
