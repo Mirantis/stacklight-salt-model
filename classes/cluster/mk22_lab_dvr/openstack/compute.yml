@@ -2,7 +2,9 @@ classes:
 - system.linux.system.repo.contrail
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
+- system.nova.compute.notification.messagingv2
 - system.neutron.compute.cluster
+- system.neutron.compute.notification.messagingv2
 - system.linux.network.interface.single_ovs_dvr
 - cluster.mk22_lab_dvr
 - system.heka.alarm.openstack_compute
@@ -19,11 +21,6 @@ parameters:
     cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
     cluster_node03_address: ${_param:openstack_control_node03_address}
-  neutron:
-    compute:
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
@@ -34,8 +31,3 @@ parameters:
           - host: ${_param:openstack_control_node01_address}
           - host: ${_param:openstack_control_node02_address}
           - host: ${_param:openstack_control_node03_address}
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
-        notify_on:
-          state_change: vm_and_task_state

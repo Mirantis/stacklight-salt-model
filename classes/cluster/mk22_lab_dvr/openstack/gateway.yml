@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.tcp_extra
 - system.linux.network.interface.single_ovs_dvr
 - system.neutron.gateway.cluster
+- system.neutron.gateway.notification.messagingv2
 - cluster.mk22_lab_dvr
 parameters:
   _param:
@@ -21,7 +22,3 @@ parameters:
     cluster_node03_hostname: ctl03
     cluster_node03_address: ${_param:openstack_control_node03_address}
   neutron:
-    gateway:
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
