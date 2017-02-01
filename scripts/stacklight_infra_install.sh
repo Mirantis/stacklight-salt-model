@@ -10,6 +10,9 @@ salt -C 'I@nagios:server' state.sls nagios.server
 salt -C 'I@elasticsearch:client' state.sls elasticsearch.client.service
 salt -C 'I@kibana:client' state.sls kibana.client.service
 salt -C 'I@kibana:client or I@elasticsearch:client' --async service.restart salt-minion
+# For redis, HAProxy and Keepalived are required but they are already installed
+# and configured if you ran the OpenStack infra script.
+salt -C 'I@redis:cluster' state.sls redis
 sleep 10
 salt -C 'I@elasticsearch:client' state.sls elasticsearch.client
 salt -C 'I@kibana:client' state.sls kibana.client
