@@ -29,11 +29,11 @@ parameters:
     cluster_elasticsearch_port: 9200
     cluster_kibana_port: 5601
     cluster_grafana_port: 3000
-    cluster_node01_name: mon01
+    cluster_node01_hostname: mon01
     cluster_node01_address: ${_param:stacklight_monitor_node01_address}
-    cluster_node02_name: mon02
+    cluster_node02_hostname: mon02
     cluster_node02_address: ${_param:stacklight_monitor_node02_address}
-    cluster_node03_name: mon03
+    cluster_node03_hostname: mon03
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
   linux:
     network:
