@@ -24,6 +24,7 @@ classes:
 - system.cinder.control.cluster
 - system.cinder.control.notification.cadf
 - system.cinder.control.notification.messagingv2
+- system.cinder.control.backend.lvm
 - system.heat.server.cluster
 - system.heat.server.notification.cadf
 - system.heat.server.notification.messagingv2
