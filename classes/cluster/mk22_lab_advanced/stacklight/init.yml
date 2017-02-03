@@ -10,14 +10,14 @@ parameters:
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
 
     heka_elasticsearch_host: ${_param:stacklight_monitor_address}
-    heka_influxdb_host: ${_param:stacklight_monitor_node01_address}
+    heka_influxdb_host: ${_param:stacklight_monitor_address}
     heka_aggregator_host: ${_param:stacklight_monitor_address}
 
     aggregator_port: 5565
 
     grafana_user: admin
     grafana_password: password
-    grafana_influxdb_host: ${_param:stacklight_monitor_node01_address}
+    grafana_influxdb_host: ${_param:stacklight_monitor_address}
 
     elasticsearch_port: 9200
 

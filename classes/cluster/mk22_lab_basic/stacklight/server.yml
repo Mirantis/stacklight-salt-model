@@ -10,6 +10,7 @@ classes:
 - system.elasticsearch.server.curator
 - system.influxdb.server.single
 - system.influxdb.database.ceilometer
+- system.influxdb.database.stacklight
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.single
