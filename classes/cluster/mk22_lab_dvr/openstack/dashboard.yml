@@ -6,6 +6,15 @@ parameters:
   horizon:
     server:
       version: liberty
+      sensu_api:
+        prd:
+          host: ${_param:stacklight_monitor_address}
+          port: 4567
+      plugin:
+        monitoring:
+          app: horizon_monitoring
+          source:
+            name: openstack-dashboard-sensu
   linux:
     system:
       repo:
