@@ -12,6 +12,7 @@ parameters:
   _param:
     cluster_domain: mk22-lab-dvr.local
     cluster_name: mk22_lab_dvr
+
     # infra service addresses
     infra_config_address: 172.16.10.100
     # openstack service addresses
