@@ -21,6 +21,10 @@ parameters:
     nagios_notification_smtp_server: 127.0.0.1
     nagios_notification_from: 'nagios@localhost'
     nagios_notification_email: 'root@localhost'
+    rabbitmq_secret_key: secret
+    rabbitmq_admin_password: password
+    rabbitmq_cold_password: password
+    rabbitmq_monitoring_password: password
     stacklight_environment: ${_param:cluster_domain}
     stacklight_notification_topic: stacklight_notifications
   linux:
@@ -46,3 +50,6 @@ parameters:
           names:
           - mon03
           - mon03.${_param:cluster_domain}
+  rabbitmq:
+    cluster:
+      name: 'monitoring'
