@@ -1,3 +1,5 @@
+classes:
+- system.sensu.client.stacklight
 parameters:
   _param:
     openstack_version: mitaka
@@ -116,3 +118,6 @@ parameters:
           names:
           - gtw01
           - gtw01.${_param:cluster_domain}
+  sensu:
+    client:
+      use_shortname: true

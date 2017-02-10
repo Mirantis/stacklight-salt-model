@@ -40,6 +40,9 @@ parameters:
     stacklight_monitor_node01_address: 172.16.10.107
     stacklight_monitor_node02_address: 172.16.10.108
     stacklight_monitor_node03_address: 172.16.10.109
+    # Transport for sensu
+    rabbitmq_monitor_password: 'password'
+    rabbitmq_monitor_port: 5672
   linux:
     network:
       host:
@@ -53,3 +56,35 @@ parameters:
           names:
           - cmp02
           - cmp02.${_param:cluster_domain}
+  cinder:
+    _support:
+      sensu:
+        enabled: false
+  glance:
+    _support:
+      sensu:
+        enabled: false
+  haproxy:
+    _support:
+      sensu:
+        enabled: false
+  heat:
+    _support:
+      sensu:
+        enabled: false
+  keystone:
+    _support:
+      sensu:
+        enabled: false
+  neutron:
+    _support:
+      sensu:
+        enabled: false
+  nova:
+    _support:
+      sensu:
+        enabled: false
+  rabbitmq:
+    _support:
+      sensu:
+        enabled: false

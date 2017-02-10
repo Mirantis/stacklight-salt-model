@@ -4,3 +4,4 @@ classes:
 - system.heka.metric_collector.single
 - cluster.mk22_lab_dvr.stacklight
 - service.grafana.collector
+- system.sensu.client.stacklight
