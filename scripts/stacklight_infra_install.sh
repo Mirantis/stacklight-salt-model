@@ -12,7 +12,8 @@ salt -C 'I@kibana:client' state.sls kibana.client.service
 salt -C 'I@kibana:client or I@elasticsearch:client' --async service.restart salt-minion
 # RabbitMQ, HAProxy and Keepalived are required but they are already installed
 # and configured if you ran the OpenStack infra script.
-salt -C 'I@sensu:server' state.sls redis
+salt -C 'I@redis:cluster:role:master' state.sls redis
+salt -C 'I@redis:cluster:role:slave' state.sls redis
 salt -C 'I@sensu:server' state.sls sensu -b 1
 sleep 10
 salt -C 'I@elasticsearch:client' state.sls elasticsearch.client
