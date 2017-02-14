@@ -17,7 +17,7 @@ salt "cmp*" state.apply
 
 # Provision opencontrail virtual routers
 hosts=($(salt-call pillar.get linux:network:host | egrep 'cmp0.*:' | sed -e 's/  *//' -e 's/://'))
-vip=$(salt-call pillar.get _param:cluster_vip_address | grep '^ ' | sed -e 's/  *//')
+vip=$(salt-call pillar.get _param:openstack_control_address | grep '^ ' | sed -e 's/  *//')
 nb=$(( ${#hosts[@]} - 1 ))
 for i in $(seq 0 $nb); do
 	h=${hosts[$i]}
