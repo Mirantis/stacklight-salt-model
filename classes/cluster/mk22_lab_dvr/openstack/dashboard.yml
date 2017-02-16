@@ -10,6 +10,10 @@ parameters:
         prd:
           host: ${_param:stacklight_monitor_address}
           port: 4567
+      control_nodes:
+        ctl01: ${_param:cluster_node01_hostname}.${_param:cluster_domain}
+        ctl02: ${_param:cluster_node02_hostname}.${_param:cluster_domain}
+        ctl03: ${_param:cluster_node03_hostname}.${_param:cluster_domain}
       plugin:
         monitoring:
           app: horizon_monitoring
