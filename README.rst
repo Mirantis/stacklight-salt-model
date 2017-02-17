@@ -62,6 +62,8 @@ Available setups
 Mk.22 basic testing lab
 -----------------------
 
+Neutron deployed with OpenContrail SDN.
+
 * 1 config node
 * 3 control nodes
 * 1 compute node
@@ -70,6 +72,19 @@ Mk.22 basic testing lab
 
 Mk.22 advanced testing lab
 --------------------------
+
+Neutron deployed with OpenContrail SDN.
+
+* 1 config node
+* 3 control nodes
+* 2 compute nodes
+* 3 monitoring nodes
+
+
+Mk.22 DVR testing lab
+---------------------
+
+Neutron deployed with OpenvSwitch (DVR flavor).
 
 * 1 config node
 * 3 control nodes
