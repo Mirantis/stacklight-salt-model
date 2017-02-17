@@ -12,7 +12,6 @@ parameters:
   _param:
     cluster_domain: mk22-lab-advanced.local
     cluster_name: mk22_lab_advanced
-    cluster_public_host: _
 
     # infra service addresses
     infra_config_address: 172.16.10.100

@@ -18,7 +18,7 @@ salt -C 'I@opencontrail:control' state.sls opencontrail -b 1
 
 # Provision opencontrail control services
 hosts=($(get_nodes_names "ctl[0-9]"))
-vip=$(salt-call pillar.get _param:cluster_vip_address | grep '^ ' | sed -e 's/  *//')
+vip=$(salt-call pillar.get _param:openstack_control_address | grep '^ ' | sed -e 's/  *//')
 nb=$(( ${#hosts[@]} - 1 ))
 for i in $(seq 0 $nb); do
 	h=${hosts[$i]}
