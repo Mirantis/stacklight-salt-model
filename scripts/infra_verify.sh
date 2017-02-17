@@ -4,7 +4,7 @@ exec > >(tee -i /tmp/"$(basename "$0" .sh)"_"$(date '+%Y-%m-%d_%H-%M-%S')".log) 
 CWD="$(dirname "$(readlink -f "$0")")"
 
 # Import common functions
-COMMONS=$CWD/common_functions.sh
+COMMONS="$CWD"/common_functions.sh
 if [ ! -f "$COMMONS" ]; then
 	echo "File $COMMONS does not exist"
 	exit 1
