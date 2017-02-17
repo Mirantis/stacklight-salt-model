@@ -45,6 +45,9 @@ parameters:
     rabbitmq_monitor_password: 'password'
     rabbitmq_monitor_port: 5672
   linux:
+    _support:
+      sensu:
+        enabled: false
     network:
       host:
         cmp01:
@@ -57,11 +60,27 @@ parameters:
           names:
           - cmp02
           - cmp02.${_param:cluster_domain}
+  apache:
+    _support:
+      sensu:
+        enabled: false
   cinder:
     _support:
       sensu:
         enabled: false
+  collectd:
+    _support:
+      sensu:
+        enabled: false
+  elasticsearch:
+    _support:
+      sensu:
+        enabled: false
   glance:
+    _support:
+      sensu:
+        enabled: false
+  glusterfs:
     _support:
       sensu:
         enabled: false
@@ -73,6 +92,10 @@ parameters:
     _support:
       sensu:
         enabled: false
+  keepalived:
+    _support:
+      sensu:
+        enabled: false
   keystone:
     _support:
       sensu:
@@ -81,7 +104,15 @@ parameters:
     _support:
       sensu:
         enabled: false
+  nginx:
+    _support:
+      sensu:
+        enabled: false
   nova:
+    _support:
+      sensu:
+        enabled: false
+  ntp:
     _support:
       sensu:
         enabled: false
