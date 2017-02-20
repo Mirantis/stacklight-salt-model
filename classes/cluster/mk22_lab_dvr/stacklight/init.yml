@@ -1,5 +1,3 @@
-classes:
-- system.sensu.client.stacklight
 parameters:
   _param:
     heka_elasticsearch_host: ${_param:stacklight_monitor_address}
