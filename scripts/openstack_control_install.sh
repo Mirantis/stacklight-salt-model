@@ -1,6 +1,8 @@
 #!/bin/bash -x
 exec > >(tee -i /tmp/"$(basename "$0" .sh)"_"$(date '+%Y-%m-%d_%H-%M-%S')".log) 2>&1
 
+salt '*' --async service.restart salt-minion; sleep 15
+
 # setup keystone service
 salt -C 'I@keystone:server' state.sls keystone.server -b 1
 # populate keystone services/tenants/admins
