@@ -1,8 +1,6 @@
 classes:
 - system.linux.system.lowmem
-- system.linux.system.repo.contrail
-- system.linux.system.repo.mos9
-- system.linux.system.repo.mos9_latest
+- system.linux.system.repo.mos92
 - system.linux.system.repo.tcp_extra
 - system.memcached.server.single
 - system.rabbitmq.server.cluster
@@ -60,6 +58,24 @@ parameters:
       package:
         python-msgpack:
           version: latest
+      repo:
+        mirantis_latest_openstack_proposed:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/ mos9.0 main"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+          pin:
+            - pin: "release a=mos9.0"
+              priority: 400
+              package: "/mysql-server-wsrep-5.6/"
+            - pin: "release a=mos9.0"
+              priority: 400
+              package: "/galera-3/"
+            - pin: "release a=mos9.0"
+              priority: 400
+              package: "/mysql-server-wsrep/"
+            - pin: "release a=mos9.0"
+              priority: 400
+              package: "/galera/"
     network:
       interface:
         eth1:
