@@ -72,10 +72,6 @@ parameters:
     _support:
       sensu:
         enabled: false
-  elasticsearch:
-    _support:
-      sensu:
-        enabled: false
   glance:
     _support:
       sensu:
