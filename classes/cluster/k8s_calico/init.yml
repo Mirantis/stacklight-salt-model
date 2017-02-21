@@ -1,0 +1,63 @@
+classes:
+- system.linux.system.single
+- system.rsyslog.client.single
+- system.openssh.client.lab
+- system.openssh.server.team.lab
+- system.openssh.server.team.stacklight
+- cluster.k8s_calico.infra
+- cluster.k8s_calico.kubernetes
+- cluster.k8s_calico.stacklight
+- cluster.k8s_calico.stacklight.client
+parameters:
+  _param:
+    cluster_domain: k8s_calico.local
+    reclass_data_revision: master
+    cluster_name: k8s_calico
+    cluster_public_host: _
+
+    # cert parameters
+    salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
+
+    # infra service addresses
+    infra_config_address: 172.16.10.100
+    infra_config_deploy_address: 192.168.10.100
+    infra_config_hostname: cfg01
+
+    # node hostnames
+    kubernetes_compute_node01_hostname: cmp01
+    kubernetes_compute_node02_hostname: cmp02
+    kubernetes_control_node01_hostname: ctl01
+    kubernetes_control_node02_hostname: ctl02
+    kubernetes_control_node03_hostname: ctl03
+    kubernetes_control_hostname: ctl
+
+    # kubernetes deploy addresses
+    kubernetes_control_node01_deploy_address: 192.168.10.107
+    kubernetes_control_node02_deploy_address: 192.168.10.108
+    kubernetes_control_node03_deploy_address: 192.168.10.109
+    kubernetes_compute_node01_deploy_address: 192.168.10.105
+    kubernetes_compute_node02_deploy_address: 192.168.10.106
+
+    # kubernetes service addresses
+    kubernetes_control_address: 172.16.10.253
+    kubernetes_control_node01_address: 172.16.10.107
+    kubernetes_control_node02_address: 172.16.10.108
+    kubernetes_control_node03_address: 172.16.10.109
+
+    # kubernetes compute
+    kubernetes_compute_node01_single_address: 172.16.10.105
+    kubernetes_compute_node02_single_address: 172.16.10.106
+
+    stacklight_monitor_node01_address: 172.16.10.150
+    stacklight_monitor_address: ${_param:stacklight_monitor_node01_address}
+
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0

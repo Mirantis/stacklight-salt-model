@@ -1,0 +1,17 @@
+classes:
+- system.linux.system.repo.docker
+- system.kubernetes.pool.cluster
+- system.salt.minion.cert.k8s_client
+- cluster.k8s_calico
+parameters:
+  kubernetes:
+    pool:
+      network:
+        image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
+        calicoctl:
+          image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
+        cni:
+          image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    common:
+      hyperkube:
+        image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.5.1-2
