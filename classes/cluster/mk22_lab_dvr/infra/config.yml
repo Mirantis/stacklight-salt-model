@@ -10,6 +10,7 @@ classes:
 - system.salt.minion.cert.proxy
 - system.sphinx.server.doc.reclass
 - system.keystone.client.single
+- system.keystone.client.service.aodh
 - system.keystone.client.service.ceilometer
 - system.keystone.client.service.nova21
 - system.mysql.client.single
