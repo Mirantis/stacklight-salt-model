@@ -7,6 +7,7 @@ salt "*" mine.flush
 salt "*" file.remove /etc/salt/grains.d/collectd
 salt "*" file.remove /etc/salt/grains.d/grafana
 salt "*" file.remove /etc/salt/grains.d/heka
+salt "*" file.remove /etc/salt/grains.d/sensu
 salt "*" file.remove /etc/salt/grains
 
 # Install collectd, heka and sensu services on the nodes, this will also
