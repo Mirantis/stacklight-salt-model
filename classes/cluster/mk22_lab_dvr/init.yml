@@ -60,6 +60,10 @@ parameters:
           names:
           - cmp02
           - cmp02.${_param:cluster_domain}
+  sensu:
+    check:
+      local_salt_master_proc:
+        command: "PATH=$PATH:/usr/lib64/nagios/plugins:/usr/lib/nagios/plugins check_procs -C salt-master -u root -c 1:50"
   apache:
     _support:
       sensu:
