@@ -59,23 +59,17 @@ parameters:
         python-msgpack:
           version: latest
       repo:
-        mirantis_latest_openstack_proposed:
-          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/ mos9.0 main"
+        mirantis_mos_9_0_main:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/ mos9.0 main restricted"
           architectures: amd64
           key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
           pin:
-            - pin: "release a=mos9.0"
-              priority: 400
+            - pin: "release a=mos9.0-main"
+              priority: 800
               package: "/mysql-server-wsrep-5.6/"
-            - pin: "release a=mos9.0"
+            - pin: "release a=mos9.0-main"
               priority: 400
-              package: "/galera-3/"
-            - pin: "release a=mos9.0"
-              priority: 400
-              package: "/mysql-server-wsrep/"
-            - pin: "release a=mos9.0"
-              priority: 400
-              package: "/galera/"
+              package: "*"
     network:
       interface:
         eth1:
