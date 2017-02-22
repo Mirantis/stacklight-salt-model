@@ -1,6 +1,9 @@
 #!/bin/bash -x
 exec > >(tee -i /tmp/"$(basename "$0" .sh)"_"$(date '+%Y-%m-%d_%H-%M-%S')".log) 2>&1
 
+# Restart salt-minion to make sure that it uses the latest Jinja library
+salt '*' --async service.restart salt-minion; sleep 15
+
 # Start by flusing Salt Mine to make sure it is clean
 # Also clean-up the grains files to make sure that we start from a clean state
 salt "*" mine.flush
