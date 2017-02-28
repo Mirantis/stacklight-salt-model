@@ -7,6 +7,9 @@ classes:
 - system.heka.remote_collector.input.amqp
 - system.heka.aggregator.cluster
 - system.heka.aggregator.output.sensu
+- system.heka.log_collector.output.sensu
+- system.heka.metric_collector.output.sensu
+- system.heka.remote_collector.output.sensu
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
