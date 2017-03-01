@@ -1,0 +1,35 @@
+classes:
+- system.linux.system.repo.grafana
+- system.linux.system.repo.influxdb
+- system.linux.system.repo.tcp_elastic
+- system.collectd.remote_client.single
+- system.heka.remote_collector.single
+- system.heka.aggregator.single
+- system.elasticsearch.server.single
+- system.elasticsearch.server.curator
+- system.influxdb.server.single
+- system.influxdb.database.stacklight
+- system.kibana.server.single
+- system.grafana.server.single
+- system.nagios.server.single
+- cluster.k8s_calico
+parameters:
+  _param:
+    cluster_node01_hostname: mon01
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+
+    kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    collectd_remote_collector_host: localhost
+  grafana:
+    server:
+      enabled: true
+      database:
+        engine: sqlite3
+        host: localhost
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: dhcp
