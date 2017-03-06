@@ -6,8 +6,8 @@ CWD="$(dirname "$(readlink -f "$0")")"
 # Import common functions
 COMMONS=$CWD/common_functions.sh
 if [ ! -f "$COMMONS" ]; then
-	echo "File $COMMONS does not exist"
-	exit 1
+    echo "File $COMMONS does not exist"
+    exit 1
 fi
 . "$COMMONS"
 
@@ -20,9 +20,9 @@ hosts=($(salt-call pillar.get linux:network:host | egrep 'cmp0.*:' | sed -e 's/ 
 vip=$(salt-call pillar.get _param:openstack_control_address | grep '^ ' | sed -e 's/  *//')
 nb=$(( ${#hosts[@]} - 1 ))
 for i in $(seq 0 $nb); do
-	h=${hosts[$i]}
-	ip=$(salt-call pillar.get linux:network:host:"${h}":address | grep '^ ' | sed -e 's/  *//')
-	salt -C 'I@opencontrail:control:id:1' cmd.run "/usr/share/contrail-utils/provision_vrouter.py --host_name $h --host_ip $ip --api_server_ip $vip --oper add --admin_user admin --admin_password workshop --admin_tenant_name admin"
+    h=${hosts[$i]}
+    ip=$(salt-call pillar.get linux:network:host:"${h}":address | grep '^ ' | sed -e 's/  *//')
+    salt -C 'I@opencontrail:control:id:1' cmd.run "/usr/share/contrail-utils/provision_vrouter.py --host_name $h --host_ip $ip --api_server_ip $vip --oper add --admin_user admin --admin_password workshop --admin_tenant_name admin"
 done
 
 # Reboot compute nodes
