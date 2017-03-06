@@ -68,10 +68,6 @@ parameters:
     _support:
       sensu:
         enabled: false
-  collectd:
-    _support:
-      sensu:
-        enabled: false
   glance:
     _support:
       sensu:
