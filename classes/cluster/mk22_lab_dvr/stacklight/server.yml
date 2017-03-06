@@ -76,8 +76,9 @@ parameters:
           enabled: true
           set:
           - pipe
-      check_handlers:
-      - default
+        pipe:
+          enabled: true
+          command: /usr/bin/tee /tmp/debug
     dashboard:
       enabled: true
       backend:
