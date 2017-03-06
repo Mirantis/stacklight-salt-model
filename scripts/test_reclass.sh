@@ -121,7 +121,7 @@ EOF"
 
     docker_exec "salt-call saltutil.sync_all"
     log_info "Running states to finish Salt master setup"
-    docker_exec "reclass --nodeinfo ${MASTER_HOSTNAME}"
+    docker_exec "reclass --nodeinfo ${MASTER_HOSTNAME} >/dev/null"
     docker_exec "salt-call ${SALT_OPTS} state.show_top"
 
     if [[ $SALT_MASTER_FULL =~ ^(True|true|1|yes)$ ]]; then
@@ -136,8 +136,9 @@ EOF"
     for node in ${NODES}; do
         node=$(basename "$node" .yml)
         log_info "Testing node ${node}"
-        docker_exec "reclass --nodeinfo ${node}"
-        docker_exec "salt-call ${SALT_OPTS} --id=${node} state.show_lowstate"
+        docker_exec "reclass --nodeinfo ${node} >/dev/null"
+        docker_exec "salt-call ${SALT_OPTS} --id=${node} state.show_top"
+        docker_exec "salt-call ${SALT_OPTS} --id=${node} state.show_lowstate >/dev/null"
     done
 }
 
