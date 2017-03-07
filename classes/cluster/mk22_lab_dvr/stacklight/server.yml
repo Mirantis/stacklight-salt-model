@@ -78,7 +78,9 @@ parameters:
           - pipe
         pipe:
           enabled: true
-          command: /usr/bin/tee /tmp/debug
+          command: 'cat /dev/null'
+        stdout:
+          enabled: true
     dashboard:
       enabled: true
       backend:
