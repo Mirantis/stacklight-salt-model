@@ -23,6 +23,7 @@ salt -C 'I@etcd:server' cmd.run "etcdctl cluster-health"
 salt -C 'I@kubernetes:master' state.sls kubernetes.master.kube-addons
 salt -C 'I@kubernetes:pool' state.sls kubernetes.pool
 salt -C 'I@kubernetes:pool' cmd.run "calicoctl node status"
+salt -C 'I@kubernetes:pool' cmd.run "calicoctl get ippool"
 
 # Setup NAT for Calico
 salt -C 'I@kubernetes:master' state.sls etcd.server.setup
