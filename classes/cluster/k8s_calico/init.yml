@@ -51,6 +51,7 @@ parameters:
 
     stacklight_monitor_node01_address: 172.16.10.150
     stacklight_monitor_address: ${_param:stacklight_monitor_node01_address}
+    stacklight_log_address: ${_param:stacklight_monitor_address}
 
   linux:
     network:
