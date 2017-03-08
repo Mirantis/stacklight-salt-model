@@ -61,3 +61,7 @@ parameters:
           names:
           - mon03
           - mon03.${_param:cluster_domain}
+  heka:
+    server:
+      extra_fields:
+        region: ${_param:openstack_region}

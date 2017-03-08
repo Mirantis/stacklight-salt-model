@@ -49,3 +49,7 @@ parameters:
   sensu:
     client:
       use_shortname: true
+  heka:
+    server:
+      extra_fields:
+        region: ${_param:openstack_region}
