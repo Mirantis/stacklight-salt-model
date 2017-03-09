@@ -16,3 +16,6 @@ parameters:
         calico:
           key: /calico/v1/ipam/v4/pool/${_param:calico_private_network}-${_param:calico_private_netmask}
           value: '{"masquerade": true, "cidr": "${_param:calico_private_network}/${_param:calico_private_netmask}"}'
+        calico-felix-metrics:
+          key: /calico/v1/config/PrometheusMetricsEnabled
+          value: 'true'
