@@ -13,5 +13,11 @@ fi
 
 # OVS deployment
 salt -C 'I@nova:compute' state.sls nova
+# If the compute nodes aren't in the default 'nova' AZ, the previous run will
+# fail because adding compute nodes to their AZ requires the compute services
+# to be registered.
+# So wait a bit and run the state once again
+sleep 10
+salt -C 'I@nova:compute' state.sls nova
 salt -C 'I@cinder:volume' state.sls cinder
 salt -C 'I@neutron:compute' state.sls neutron

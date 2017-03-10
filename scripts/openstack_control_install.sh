@@ -5,6 +5,8 @@ exec > >(tee -i /tmp/"$(basename "$0" .sh)"_"$(date '+%Y-%m-%d_%H-%M-%S')".log) 
 salt -C 'I@keystone:server' state.sls keystone.server -b 1
 # populate keystone services/tenants/admins
 salt -C 'I@keystone:client' state.sls keystone.client
+# salt-minion should be restarted in case keystone.client has changed the Salt configuration
+salt -C 'I@keystone:client' --async service.restart salt-minion; sleep 5
 salt -C 'I@keystone:server' cmd.run ". /root/keystonerc; keystone service-list"
 
 # Install glance and ensure glusterfs clusters
@@ -43,3 +45,6 @@ salt -C 'I@heka:ceilometer_collector:enabled:True' state.sls heka.ceilometer_col
 
 # Install aodh services
 salt -C 'I@aodh:server' state.sls aodh -b 1
+
+# Create the Nova resources (if any)
+salt -C 'I@nova:client' state.sls nova

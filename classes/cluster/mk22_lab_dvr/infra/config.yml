@@ -43,6 +43,28 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  keystone:
+    client:
+      server:
+        identity2:
+          admin:
+            protocol: http
+            host: ${_param:keystone_service_host}
+            port: 5000
+            api_version: '2'
+            service_token: ${_param:keystone_service_token}
+            project: admin
+            user: admin
+            password: ${_param:keystone_admin_password}
+            region_name: ${_param:openstack_region}
+  nova:
+    client:
+      enabled: true
+      server:
+        identity2:
+          availability_zones:
+          - az1
+          - az2
   reclass:
     storage:
       node:
@@ -66,11 +88,13 @@ parameters:
             single_address: 172.16.10.105
             tenant_address: 10.1.0.105
             external_address: 10.16.0.105
+            openstack_availability_zone: az1
         openstack_compute_node02:
           params:
             single_address: 172.16.10.106
             tenant_address: 10.1.0.106
             external_address: 10.16.0.106
+            openstack_availability_zone: az2
         openstack_gateway_node01:
           params:
             tenant_address: 10.1.0.110
