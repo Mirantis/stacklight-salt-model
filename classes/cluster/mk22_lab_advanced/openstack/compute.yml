@@ -1,7 +1,8 @@
 classes:
 - system.linux.storage.loopback
 - system.linux.system.repo.contrail
-- system.linux.system.repo.mos9
+- system.linux.system.repo.mos92
+- system.linux.system.repo.mos9_galera
 - system.nova.compute.cluster
 - system.nova.compute.notification.messagingv2
 - system.opencontrail.compute.cluster
