@@ -48,3 +48,7 @@ parameters:
           names:
           - mon
           - mon.${_param:cluster_domain}
+  heka:
+    server:
+      extra_fields:
+        region: ${_param:openstack_region}
