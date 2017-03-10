@@ -12,6 +12,7 @@ classes:
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.single
+- system.salt.minion.cert.k8s_client
 - cluster.k8s_calico
 parameters:
   _param:
