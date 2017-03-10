@@ -34,3 +34,5 @@ salt -C 'I@kubernetes:master' state.sls kubernetes exclude=kubernetes.master.set
 # Register addons
 salt -C 'I@kubernetes:master' --subset 1 state.sls kubernetes.master.setup
 
+# Nginx needs to be configured
+salt -C 'I@nginx:server' state.sls nginx
