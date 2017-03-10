@@ -5,6 +5,7 @@ classes:
 - system.collectd.remote_client.cluster
 - system.heka.remote_collector.cluster
 - system.heka.remote_collector.input.amqp
+- system.heka.remote_collector.output.sensu
 - system.heka.aggregator.cluster
 - system.heka.aggregator.output.sensu
 - system.elasticsearch.server.cluster
@@ -47,6 +48,10 @@ parameters:
     cluster_node02_address: ${_param:stacklight_monitor_node02_address}
     cluster_node03_hostname: mon03
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
+  heka:
+    aggregator:
+      notification_handler: 'stdout'
+      noop_handler: 'pipe'
   linux:
     network:
       interface:
