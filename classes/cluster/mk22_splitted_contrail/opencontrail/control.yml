@@ -1,0 +1,28 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos8
+- system.neutron.control.cluster
+- system.opencontrail.control.control
+- cluster.mk22_splitted_contrail
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 60
+    cluster_vip_address: ${_param:opencontrail_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ntw01
+    cluster_node01_address: ${_param:opencontrail_control_node01_address}
+    cluster_node02_hostname: ntw02
+    cluster_node02_address: ${_param:opencontrail_control_node02_address}
+    cluster_node03_hostname: ntw03
+    cluster_node03_address: ${_param:opencontrail_control_node03_address}
+  linux:
+    network:
+      interface:
+        eth1: ${_param:linux_static_interface}
+      host:
+        ctl:
+          address: ${_param:openstack_control_address}
+          names:
+          - ctl
+          - ctl.${_param:cluster_domain}

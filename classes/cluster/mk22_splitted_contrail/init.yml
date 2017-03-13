@@ -1,0 +1,74 @@
+classes:
+- system.linux.system.single
+- system.rsyslog.client.single
+- system.openssh.server.team.lab
+- cluster.mk22_splitted_contrail.fuel
+- cluster.mk22_splitted_contrail.opencontrail
+- cluster.mk22_splitted_contrail.openstack
+- cluster.mk22_splitted_contrail.stacklight
+- cluster.mk22_splitted_contrail.stacklight.client
+parameters:
+  _param:
+    cluster_domain: mk22-splitted-contrail.local
+    cluster_name: mk22_splitted_contrail
+    cluster_public_host: _
+
+    # fuel service addresses
+    fuel_config_address: 172.16.10.100
+
+    # openstack service addresses
+    openstack_proxy_address: 172.16.10.121
+    openstack_proxy_node01_address: 172.16.10.121
+
+    openstack_control_address: 172.16.10.254
+    openstack_control_node01_address: 172.16.10.101
+    openstack_control_node02_address: 172.16.10.102
+    openstack_control_node03_address: 172.16.10.103
+
+    openstack_database_address: ${_param:openstack_control_address}
+    openstack_database_node01_address: ${_param:openstack_control_node01_address}
+    openstack_database_node02_address: ${_param:openstack_control_node02_address}
+    openstack_database_node03_address: ${_param:openstack_control_node02_address}
+
+    openstack_message_queue_address: ${_param:openstack_control_address}
+    openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
+    openstack_message_queue_node02_address: ${_param:openstack_control_node02_address}
+    openstack_message_queue_node03_address: ${_param:openstack_control_node03_address}
+
+    # opencontrail service addresses
+    analytics_vip_address: 172.16.10.249
+    opencontrail_analytics_address: 172.16.10.249
+    opencontrail_analytics_node01_address: 172.16.10.171
+    opencontrail_analytics_node02_address: 172.16.10.172
+    opencontrail_analytics_node03_address: 172.16.10.173
+
+    network_vip_address: 172.16.10.250
+    opencontrail_control_address: 172.16.10.250
+    opencontrail_control_node01_address: 172.16.10.161
+    opencontrail_control_node02_address: 172.16.10.162
+    opencontrail_control_node03_address: 172.16.10.163
+    opencontrail_gateway_address: 172.16.10.131
+
+    # stacklight service addresses
+    stacklight_monitor_address: 172.16.10.107
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_telemetry_node01_address: ${_param:stacklight_monitor_node01_address}
+    stacklight_log_address: ${_param:stacklight_monitor_address}
+
+    # openstack compute nodes
+    openstack_compute_node01_address: 172.16.10.105
+
+    # Interface definitions
+    linux_dhcp_interface:
+      enabled: true
+      type: eth
+      proto: dhcp
+    linux_static_interface:
+      enabled: true
+      type: eth
+      proto: static
+      address: ${_param:single_address}
+      netmask: 255.255.255.0
+      gateway: 172.16.10.1
+      name_servers:
+        - 8.8.8.8
