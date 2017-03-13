@@ -14,4 +14,4 @@ fi
 # OVS deployment
 salt -C 'I@nova:compute' state.sls nova
 salt -C 'I@cinder:volume' state.sls cinder
-salt -C 'I@nova:neutron' state.sls neutron
+salt -C 'I@neutron:compute' state.sls neutron
