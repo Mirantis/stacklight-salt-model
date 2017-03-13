@@ -90,3 +90,14 @@ Neutron deployed with OpenvSwitch (DVR flavor).
 * 3 control nodes
 * 2 compute nodes
 * 3 monitoring nodes
+
+
+Kubernetes testing lab
+----------------------
+
+Kubernetes deployed with Calico.
+
+* 1 config node
+* 3 master nodes
+* 2 pool nodes
+* 1 monitoring node
