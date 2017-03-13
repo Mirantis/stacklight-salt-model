@@ -3,11 +3,15 @@ classes:
 - system.kubernetes.pool.cluster
 - system.salt.minion.cert.k8s_client
 - service.kubernetes.logging
+- system.salt.minion.cert.etcd_client
 - cluster.k8s_calico
 parameters:
   kubernetes:
     pool:
       network:
+        etcd:
+          ssl:
+            enabled: true
         image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
         calicoctl:
           image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
