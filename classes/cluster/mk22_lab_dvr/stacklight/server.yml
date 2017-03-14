@@ -12,6 +12,7 @@ classes:
 - system.elasticsearch.server.curator
 - system.kibana.server.single
 - system.grafana.server.single
+- system.grafana.server.plugin.piechart
 - system.influxdb.server.single
 - system.influxdb.database.stacklight
 - system.nagios.server.cluster
