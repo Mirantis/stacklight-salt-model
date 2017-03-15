@@ -59,7 +59,7 @@ _atexit() {
 
 run_container() {
     MASTER_HOSTNAME=$1
-    CONTAINER=$(docker run ${DOCKER_OPTS} --name "${MASTER_HOSTNAME}" -h "$(echo "${MASTER_HOSTNAME}"|cut -d . -f 1)" -v "${RECLASS_ROOT}":/srv/salt/reclass -i -t -d "${DOCKER_IMAGE}")
+    CONTAINER=$(docker run ${DOCKER_OPTS} --name "${MASTER_HOSTNAME}-$(openssl rand -hex 2)" -h "$(echo "${MASTER_HOSTNAME}"|cut -d . -f 1)" -v "${RECLASS_ROOT}":/srv/salt/reclass -i -t -d "${DOCKER_IMAGE}")
     echo "$CONTAINER"
 }
 
