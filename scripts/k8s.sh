@@ -23,6 +23,7 @@ salt -C 'I@etcd:server' cmd.run "etcdctl cluster-health"
 salt -C 'I@kubernetes:master' state.sls kubernetes.master.kube-addons
 salt -C 'I@kubernetes:pool' state.sls kubernetes.pool
 salt -C 'I@kubernetes:pool' cmd.run "calicoctl node status"
+salt -C 'I@kubernetes:pool' cmd.run "calicoctl get ippool"
 
 # Setup NAT for Calico
 salt -C 'I@kubernetes:master' state.sls etcd.server.setup
@@ -33,3 +34,5 @@ salt -C 'I@kubernetes:master' state.sls kubernetes exclude=kubernetes.master.set
 # Register addons
 salt -C 'I@kubernetes:master' --subset 1 state.sls kubernetes.master.setup
 
+# Nginx needs to be configured
+salt -C 'I@nginx:server' state.sls nginx

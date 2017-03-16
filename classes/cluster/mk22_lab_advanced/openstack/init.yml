@@ -1,7 +1,7 @@
 parameters:
   _param:
     openstack_version: mitaka
-    openstack_region: RegionOne
+    openstack_region: 'eu-central-1'
     admin_email: root@localhost
     cluster_public_host: _
     opencontrail_version: 3.0

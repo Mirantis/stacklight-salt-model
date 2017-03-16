@@ -59,7 +59,7 @@ _atexit() {
 
 run_container() {
     MASTER_HOSTNAME=$1
-    CONTAINER=$(docker run ${DOCKER_OPTS} --name "${MASTER_HOSTNAME}" -h "$(echo "${MASTER_HOSTNAME}"|cut -d . -f 1)" -v "${RECLASS_ROOT}":/srv/salt/reclass -i -t -d "${DOCKER_IMAGE}")
+    CONTAINER=$(docker run ${DOCKER_OPTS} --name "${MASTER_HOSTNAME}-$(openssl rand -hex 2)" -h "$(echo "${MASTER_HOSTNAME}"|cut -d . -f 1)" -v "${RECLASS_ROOT}":/srv/salt/reclass -i -t -d "${DOCKER_IMAGE}")
     echo "$CONTAINER"
 }
 
@@ -121,7 +121,7 @@ EOF"
 
     docker_exec "salt-call saltutil.sync_all"
     log_info "Running states to finish Salt master setup"
-    docker_exec "reclass --nodeinfo ${MASTER_HOSTNAME}"
+    docker_exec "reclass --nodeinfo ${MASTER_HOSTNAME} >/dev/null"
     docker_exec "salt-call ${SALT_OPTS} state.show_top"
 
     if [[ $SALT_MASTER_FULL =~ ^(True|true|1|yes)$ ]]; then
@@ -136,8 +136,9 @@ EOF"
     for node in ${NODES}; do
         node=$(basename "$node" .yml)
         log_info "Testing node ${node}"
-        docker_exec "reclass --nodeinfo ${node}"
-        docker_exec "salt-call ${SALT_OPTS} --id=${node} state.show_lowstate"
+        docker_exec "reclass --nodeinfo ${node} >/dev/null"
+        docker_exec "salt-call ${SALT_OPTS} --id=${node} state.show_top"
+        docker_exec "salt-call ${SALT_OPTS} --id=${node} state.show_lowstate >/dev/null"
     done
 }
 

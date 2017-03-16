@@ -33,24 +33,25 @@ parameters:
     kubernetes_control_hostname: ctl
 
     # kubernetes deploy addresses
-    kubernetes_control_node01_deploy_address: 192.168.10.107
-    kubernetes_control_node02_deploy_address: 192.168.10.108
-    kubernetes_control_node03_deploy_address: 192.168.10.109
+    kubernetes_control_node01_deploy_address: 192.168.10.101
+    kubernetes_control_node02_deploy_address: 192.168.10.102
+    kubernetes_control_node03_deploy_address: 192.168.10.103
     kubernetes_compute_node01_deploy_address: 192.168.10.105
     kubernetes_compute_node02_deploy_address: 192.168.10.106
 
     # kubernetes service addresses
     kubernetes_control_address: 172.16.10.253
-    kubernetes_control_node01_address: 172.16.10.107
-    kubernetes_control_node02_address: 172.16.10.108
-    kubernetes_control_node03_address: 172.16.10.109
+    kubernetes_control_node01_address: 172.16.10.101
+    kubernetes_control_node02_address: 172.16.10.102
+    kubernetes_control_node03_address: 172.16.10.103
 
     # kubernetes compute
     kubernetes_compute_node01_single_address: 172.16.10.105
     kubernetes_compute_node02_single_address: 172.16.10.106
 
-    stacklight_monitor_node01_address: 172.16.10.150
+    stacklight_monitor_node01_address: 172.16.10.107
     stacklight_monitor_address: ${_param:stacklight_monitor_node01_address}
+    stacklight_log_address: ${_param:stacklight_monitor_address}
 
   linux:
     network:
