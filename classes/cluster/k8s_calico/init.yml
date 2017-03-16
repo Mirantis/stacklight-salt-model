@@ -54,6 +54,9 @@ parameters:
     stacklight_log_address: ${_param:stacklight_monitor_address}
 
   linux:
+    _support:
+      sensu:
+        enabled: false
     network:
       interface:
         ens4:
@@ -62,3 +65,7 @@ parameters:
           proto: static
           address: ${_param:single_address}
           netmask: 255.255.255.0
+  ntp:
+    _support:
+      sensu:
+        enabled: false

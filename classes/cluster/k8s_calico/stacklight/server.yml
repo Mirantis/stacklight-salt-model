@@ -4,7 +4,9 @@ classes:
 - system.linux.system.repo.tcp_elastic
 - system.collectd.remote_client.single
 - system.heka.remote_collector.single
+- system.heka.remote_collector.output.sensu
 - system.heka.aggregator.single
+- system.heka.aggregator.output.sensu
 - system.elasticsearch.server.single
 - system.elasticsearch.server.curator
 - system.influxdb.server.single
@@ -12,21 +14,32 @@ classes:
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.single
+- system.rabbitmq.server.single
+- system.rabbitmq.server.vhost.monitoring
+- system.sensu.client.unsubscribe.collectd
+- system.sensu.server.single
 - system.salt.minion.cert.k8s_client
 - cluster.k8s_calico
 parameters:
   _param:
     cluster_node01_hostname: mon01
     cluster_node01_address: ${_param:stacklight_monitor_node01_address}
-
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
     collectd_remote_collector_host: localhost
+    rabbitmq_secret_key: secret
+    rabbitmq_admin_password: password
+    sensu_dashboard_password: password
+    sensu_dashboard_port: 3001
   grafana:
     server:
       enabled: true
       database:
         engine: sqlite3
         host: localhost
+  heka:
+    aggregator:
+      sensu_notification_handler: 'stdout'
+      sensu_noop_handler: 'pipe'
   linux:
     network:
       interface:
@@ -34,3 +47,31 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  rabbitmq:
+    _support:
+      sensu:
+        enabled: false
+  sensu:
+    server:
+      handler:
+        default:
+          enabled: true
+          set:
+          - pipe
+        pipe:
+          enabled: true
+          command: 'cat /dev/null'
+        stdout:
+          enabled: true
+    dashboard:
+      enabled: true
+      backend:
+        sensu:
+          host: ${_param:single_address}
+          port: 4567
+      bind:
+        address: ${_param:single_address}
+        port: ${_param:sensu_dashboard_port}
+      admin:
+        username: admin
+        password: ${_param:sensu_dashboard_password}

@@ -1,8 +1,8 @@
 classes:
 - system.nginx.server.single
-- system.nginx.server.proxy.grafana_web
-- system.nginx.server.proxy.kibana_web
-- system.nginx.server.proxy.nagios_web
+- system.nginx.server.proxy.stacklight.grafana
+- system.nginx.server.proxy.stacklight.kibana
+- system.nginx.server.proxy.stacklight.uchiwa
 - system.salt.minion.cert.proxy
 - cluster.k8s_calico
 parameters:
@@ -12,6 +12,10 @@ parameters:
 
     nginx_proxy_ssl:
       enabled: true
-      authority: ${_param:salt_minion_ca_authority} 
+      authority: ${_param:salt_minion_ca_authority}
       engine: salt
       mode: secure
+  nginx:
+    _support:
+      sensu:
+        enabled: false

@@ -19,3 +19,11 @@ parameters:
         calico-felix-metrics:
           key: /calico/v1/config/PrometheusMetricsEnabled
           value: 'true'
+  haproxy:
+    _support:
+      sensu:
+        enabled: false
+  keepalived:
+    _support:
+      sensu:
+        enabled: false
