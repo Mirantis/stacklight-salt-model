@@ -13,7 +13,6 @@ classes:
 - system.influxdb.database.stacklight
 - system.kibana.server.single
 - system.grafana.server.single
-- system.nagios.server.single
 - system.rabbitmq.server.single
 - system.rabbitmq.server.vhost.monitoring
 - system.sensu.client.unsubscribe.collectd
