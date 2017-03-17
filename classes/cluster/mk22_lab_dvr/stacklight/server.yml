@@ -26,6 +26,7 @@ classes:
 - system.haproxy.proxy.listen.stacklight.influxdb
 - system.haproxy.proxy.listen.stacklight.redis
 - system.haproxy.proxy.listen.stacklight.sensu
+- system.haproxy.proxy.listen.stacklight.uchiwa
 - service.haproxy.proxy.single
 - system.keepalived.cluster.instance.stacklight_monitor_vip
 parameters:
