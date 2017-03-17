@@ -1,6 +1,5 @@
 classes:
 - service.etcd.server.cluster
-- system.haproxy.proxy.listen.kubernetes.etcd
 - system.haproxy.proxy.listen.kubernetes.apiserver
 - system.linux.system.repo.docker
 - system.kubernetes.master.cluster
