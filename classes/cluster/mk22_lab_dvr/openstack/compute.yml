@@ -10,6 +10,7 @@ classes:
 - system.cinder.volume.single
 - system.cinder.volume.backend.lvm
 - system.cinder.volume.notification.messagingv2
+- system.ceilometer.agent.cluster
 - system.linux.network.interface.single_ovs_dvr
 - cluster.mk22_lab_dvr
 - system.heka.alarm.openstack_compute
@@ -21,6 +22,7 @@ parameters:
     external_interface: eth3
     interface_mtu: 9000
     cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ctl01
     cluster_node01_address: ${_param:openstack_control_node01_address}
     cluster_node02_hostname: ctl02
@@ -32,6 +34,16 @@ parameters:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+        notify_on:
+          state_change: vm_and_task_state
+      message_queue:
+        members:
+          - host: ${_param:openstack_control_node01_address}
+          - host: ${_param:openstack_control_node02_address}
+          - host: ${_param:openstack_control_node03_address}
+  ceilometer:
+    agent:
       message_queue:
         members:
           - host: ${_param:openstack_control_node01_address}
