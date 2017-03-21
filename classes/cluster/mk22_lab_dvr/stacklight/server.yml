@@ -15,6 +15,7 @@ classes:
 - system.grafana.server.plugin.piechart
 - system.influxdb.server.single
 - system.influxdb.database.stacklight
+- system.influxdb.database.ceilometer
 - system.nagios.server.cluster
 - system.sensu.server.cluster
 - cluster.mk22_lab_dvr
