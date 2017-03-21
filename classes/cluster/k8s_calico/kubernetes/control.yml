@@ -3,6 +3,7 @@ classes:
 - system.haproxy.proxy.listen.kubernetes.apiserver
 - system.linux.system.repo.docker
 - system.kubernetes.master.cluster
+- service.kubernetes.logging
 - cluster.k8s_calico.kubernetes.compute
 - cluster.k8s_calico
 parameters:
