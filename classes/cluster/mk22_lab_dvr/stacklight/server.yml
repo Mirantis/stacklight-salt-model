@@ -17,6 +17,7 @@ classes:
 - system.influxdb.database.stacklight
 - system.influxdb.database.ceilometer
 - system.nagios.server.cluster
+- system.sensu.client.unsubscribe.collectd
 - system.sensu.server.cluster
 - cluster.mk22_lab_dvr
 - system.haproxy.proxy.listen.stacklight.elasticsearch
@@ -52,8 +53,8 @@ parameters:
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
   heka:
     aggregator:
-      notification_handler: 'stdout'
-      noop_handler: 'pipe'
+      sensu_notification_handler: 'stdout'
+      sensu_noop_handler: 'pipe'
   linux:
     network:
       interface:
