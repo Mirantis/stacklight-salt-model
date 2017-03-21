@@ -89,6 +89,10 @@ parameters:
         engine: file
       images: []
       workers: 1
+  neutron:
+    server:
+      identity:
+        region: ${_param:openstack_region}
   nova:
     controller:
       networking: dvr
