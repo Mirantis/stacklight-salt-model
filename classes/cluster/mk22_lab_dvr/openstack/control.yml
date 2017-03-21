@@ -77,6 +77,8 @@ parameters:
   keystone:
     server:
       admin_email: ${_param:admin_email}
+  apache:
+    server:
       site:
         keystone:
           log:
