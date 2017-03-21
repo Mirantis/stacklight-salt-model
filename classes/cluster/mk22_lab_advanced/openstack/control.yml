@@ -98,3 +98,5 @@ parameters:
       public_networks: []
       contrail:
         version: ${_param:opencontrail_version}
+      identity:
+        region: ${_param:openstack_region}
