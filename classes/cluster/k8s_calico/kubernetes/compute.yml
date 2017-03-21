@@ -2,6 +2,7 @@ classes:
 - system.linux.system.repo.docker
 - system.kubernetes.pool.cluster
 - system.salt.minion.cert.k8s_client
+- service.kubernetes.logging
 - cluster.k8s_calico
 parameters:
   kubernetes:
