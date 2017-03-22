@@ -8,11 +8,6 @@ parameters:
           names:
           - ${_param:infra_config_hostname}
           - ${_param:infra_config_hostname}.${_param:cluster_domain}
-        cfg:
-          address: ${_param:infra_config_address}
-          names:
-          - cfg
-          - cfg.${_param:cluster_domain}
     system:
       name: ${_param:infra_config_hostname}
       domain: ${_param:cluster_domain}
