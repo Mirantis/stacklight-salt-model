@@ -41,7 +41,6 @@ salt -C 'I@nginx:server' state.sls nginx
 
 # Install ceilometer services
 salt -C 'I@ceilometer:server' state.sls ceilometer -b 1
-salt -C 'I@heka:ceilometer_collector:enabled:True' state.sls heka.ceilometer_collector
 
 # Install aodh services
 salt -C 'I@aodh:server' state.sls aodh -b 1
