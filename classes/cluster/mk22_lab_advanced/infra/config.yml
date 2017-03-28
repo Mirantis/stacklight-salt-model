@@ -61,3 +61,9 @@ parameters:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
+        openstack_compute_node01:
+          params:
+            linux_system_codename: trusty
+        openstack_compute_node02:
+          params:
+            linux_system_codename: trusty

@@ -90,12 +90,14 @@ parameters:
             tenant_address: 10.1.0.105
             external_address: 10.16.0.105
             openstack_availability_zone: az1
+            linux_system_codename: trusty
         openstack_compute_node02:
           params:
             single_address: 172.16.10.106
             tenant_address: 10.1.0.106
             external_address: 10.16.0.106
             openstack_availability_zone: az2
+            linux_system_codename: trusty
         openstack_gateway_node01:
           params:
             tenant_address: 10.1.0.110
