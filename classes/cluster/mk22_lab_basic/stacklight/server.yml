@@ -5,7 +5,9 @@ classes:
 - system.collectd.remote_client.single
 - system.heka.remote_collector.single
 - system.heka.remote_collector.input.amqp
+- system.heka.remote_collector.output.sensu
 - system.heka.aggregator.single
+- system.heka.aggregator.output.sensu
 - system.elasticsearch.server.single
 - system.elasticsearch.server.curator
 - system.influxdb.server.single
@@ -13,13 +15,20 @@ classes:
 - system.influxdb.database.stacklight
 - system.kibana.server.single
 - system.grafana.server.single
-- system.nagios.server.single
+- system.rabbitmq.server.single
+- system.rabbitmq.server.vhost.monitoring
+- system.sensu.client.unsubscribe.collectd
+- system.sensu.server.single
 - cluster.mk22_lab_basic
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
     collectd_remote_collector_host: localhost
     heka_amqp_host: ${_param:openstack_message_queue_address}
+    rabbitmq_secret_key: secret
+    rabbitmq_admin_password: password
+    sensu_dashboard_password: password
+    sensu_dashboard_port: 3001
   linux:
     network:
       interface:
@@ -27,3 +36,31 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  heka:
+    aggregator:
+      sensu_notification_handler: stdout
+      sensu_noop_handler: pipe
+  sensu:
+    server:
+      handler:
+        default:
+          enabled: true
+          set:
+          - pipe
+        pipe:
+          enabled: true
+          command: 'cat /dev/null'
+        stdout:
+          enabled: true
+    dashboard:
+      enabled: true
+      backend:
+        sensu:
+          host: ${_param:single_address}
+          port: 4567
+      bind:
+        address: ${_param:single_address}
+        port: ${_param:sensu_dashboard_port}
+      admin:
+        username: admin
+        password: ${_param:sensu_dashboard_password}

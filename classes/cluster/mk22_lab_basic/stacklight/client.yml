@@ -1,5 +1,12 @@
 classes:
 - system.collectd.client.output.heka
 - system.heka.log_collector.single
+- system.heka.log_collector.output.sensu
 - system.heka.metric_collector.single
+- system.heka.metric_collector.output.sensu
+- system.sensu.client.stacklight
 - service.grafana.collector
+parameters:
+  sensu:
+    client:
+      use_shortname: true

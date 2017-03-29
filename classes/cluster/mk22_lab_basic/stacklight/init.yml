@@ -25,17 +25,14 @@ parameters:
 
     kibana_port: 5601
 
-    nagios_host: ${_param:stacklight_monitor_address}
-    nagios_status_port: 8001
-    nagios_username: nagiosadmin
-    nagios_password: secret
-    nagios_notification_smtp_server: 127.0.0.1
-    nagios_notification_from: 'nagios@localhost'
-    nagios_notification_email: 'root@localhost'
+    rabbitmq_monitor_password: password
 
     stacklight_environment: ${_param:cluster_domain}
     stacklight_notification_topic: stacklight_notifications
   linux:
+    _support:
+      sensu:
+        enabled: false
     network:
       host:
         mon01:
@@ -52,3 +49,59 @@ parameters:
     server:
       extra_fields:
         region: ${_param:openstack_region}
+  apache:
+    _support:
+      sensu:
+        enabled: false
+  cinder:
+    _support:
+      sensu:
+        enabled: false
+  glance:
+    _support:
+      sensu:
+        enabled: false
+  glusterfs:
+    _support:
+      sensu:
+        enabled: false
+  haproxy:
+    _support:
+      sensu:
+        enabled: false
+  heat:
+    _support:
+      sensu:
+        enabled: false
+  keepalived:
+    _support:
+      sensu:
+        enabled: false
+  keystone:
+    _support:
+      sensu:
+        enabled: false
+  neutron:
+    _support:
+      sensu:
+        enabled: false
+  nginx:
+    _support:
+      sensu:
+        enabled: false
+  nova:
+    _support:
+      sensu:
+        enabled: false
+  ntp:
+    _support:
+      sensu:
+        enabled: false
+  opencontrail:
+    _support:
+      sensu:
+        enabled: false
+  rabbitmq:
+    _support:
+      sensu:
+        enabled: false

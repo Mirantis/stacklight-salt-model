@@ -1,5 +1,4 @@
 classes:
-- system.linux.system.repo.tcp_base
 - system.horizon.server.single
 - system.sphinx.server.doc.reclass
 parameters:
