@@ -23,12 +23,6 @@ parameters:
 
     kibana_port: 5601
 
-    # TODO: remove those parameters after system reclass update
-    nagios_host: ${_param:stacklight_monitor_address}
-    nagios_status_port: 8001
-    nagios_username: nagiosadmin
-    nagios_password: secret
-
     # Sensu parameters
     rabbitmq_monitor_password: password
 
