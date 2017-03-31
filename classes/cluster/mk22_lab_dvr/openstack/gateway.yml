@@ -1,17 +1,16 @@
 classes:
-- system.linux.system.repo.contrail
-- system.linux.system.repo.mos92
-- system.linux.system.repo.mos9_galera
-- system.linux.system.repo.tcp_extra
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
 - system.linux.network.interface.single_ovs_dvr
 - system.neutron.gateway.cluster
 - system.neutron.gateway.notification.messagingv2
 - cluster.mk22_lab_dvr
 parameters:
   _param:
-    primary_interface: eth1
-    tenant_interface: eth2
-    external_interface: eth3
+    primary_interface: ens4
+    tenant_interface: ens5
+    external_interface: ens6
     interface_mtu: 9000
     neutron_gateway_dvr: True
     neutron_gateway_agent_mode: dvr_snat
