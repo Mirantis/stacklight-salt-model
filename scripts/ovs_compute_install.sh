@@ -21,3 +21,4 @@ sleep 10
 salt -C 'I@nova:compute' state.sls nova
 salt -C 'I@cinder:volume' state.sls cinder
 salt -C 'I@neutron:compute' state.sls neutron
+salt -C 'I@ceilometer:agent' state.sls ceilometer
