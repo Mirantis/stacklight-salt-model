@@ -1,7 +1,7 @@
 classes:
 - service.git.client
 - system.linux.system.single
-- system.linux.system.repo.tcp_salt
+- system.linux.system.repo.mcp.salt
 - system.openssh.client.lab
 - system.salt.master.api
 - system.salt.master.pkg

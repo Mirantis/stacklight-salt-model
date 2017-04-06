@@ -1,7 +1,7 @@
 classes:
 - service.git.client
 - system.linux.system.single
-- system.linux.system.repo.tcp_salt
+- system.linux.system.repo.mcp.salt
 - system.openssh.client.lab
 - system.salt.master.pkg
 - system.reclass.storage.salt
@@ -59,6 +59,3 @@ parameters:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
-        openstack_compute_node01:
-          params:
-            linux_system_codename: trusty
