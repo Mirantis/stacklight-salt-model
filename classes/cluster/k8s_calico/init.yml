@@ -15,6 +15,8 @@ parameters:
     cluster_name: k8s_calico
     cluster_public_host: _
 
+    apt_mk_version: nightly
+
     # cert parameters
     salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
     salt_minion_ca_authority: salt_master_ca

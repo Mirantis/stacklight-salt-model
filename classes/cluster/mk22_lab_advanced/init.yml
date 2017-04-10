@@ -13,6 +13,8 @@ parameters:
     cluster_domain: mk22-lab-advanced.local
     cluster_name: mk22_lab_advanced
 
+    apt_mk_version: nightly
+
     # infra service addresses
     infra_config_address: 172.16.10.100
 
