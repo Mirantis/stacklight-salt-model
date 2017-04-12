@@ -71,7 +71,8 @@ test_master() {
     docker_exec "wget -O - http://apt-mk.mirantis.com/public.gpg | apt-key add -"
 
     docker_exec "apt-get update"
-    docker_exec "apt-get install -y salt-master python-psutil iproute2 curl reclass salt-formula-*"
+    docker_exec "apt-get install -y salt-master python-psutil iproute2 curl python-dev python-pip salt-formula-*"
+    docker_exec "pip install -U https://github.com/madduck/reclass/archive/master.zip"
 
     log_info "Setting up Salt master"
     # TODO: remove grains.d hack when fixed in formula
