@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.saltstack.trusty
 - system.linux.system.repo.tcp_mk20
 - system.horizon.server.single
+- system.horizon.server.plugin.theme
 parameters:
   horizon:
     server:

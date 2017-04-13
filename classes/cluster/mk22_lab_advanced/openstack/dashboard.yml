@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.trusty
 - system.horizon.server.single
+- system.horizon.server.plugin.theme
 parameters:
   linux:
     system:
