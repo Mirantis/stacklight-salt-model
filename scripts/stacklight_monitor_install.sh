@@ -18,6 +18,9 @@ salt "*" file.remove /etc/salt/grains
 salt "*" state.sls collectd
 salt "*" state.sls heka
 salt -C 'I@sensu:client' state.sls sensu
+# /usr/local/bin/check_hekad.sh run by sensu client needs to be run as heka user
+salt -C 'I@sensu:client' file.append /etc/sudoers.d/90-sensu-user \
+    'sensu ALL=(heka) NOPASSWD: /usr/local/bin/check_hekad.sh'
 
 # Gather the Grafana metadata as grains
 salt -C 'I@grafana:collector' state.sls grafana.collector
